@@ -26,7 +26,21 @@ npm install
 npx playwright install chromium
 ```
 
+If you encounter issues with the browser installation, you may need to:
+```bash
+# Install system dependencies first
+npx playwright install-deps chromium
+# Then install the browser
+npx playwright install chromium
+```
+
 ## Running Tests
+
+### Verify Playwright Setup (offline test):
+```bash
+npx playwright test verify-setup.spec.js
+```
+This test runs without network access to verify that Playwright is working correctly.
 
 ### Run all tests (headless mode):
 ```bash
@@ -48,9 +62,19 @@ npm run test:ui
 npm run test:report
 ```
 
+### Run specific test file:
+```bash
+npx playwright test tests/bingo-flow.spec.js
+```
+
 ## Test Files
 
+- `tests/verify-setup.spec.js` - Verification test that proves Playwright is working (runs offline)
 - `tests/bingo-flow.spec.js` - Main test file that navigates between admin and web sites
+
+**Note:** The bingo-flow tests require access to the private dev sites. They will fail with DNS errors if run from an environment without access to:
+- https://admin.dev.gamecoms.net/
+- https://release-layout-2.dev.gamecoms.net/
 
 ## Configuration
 
