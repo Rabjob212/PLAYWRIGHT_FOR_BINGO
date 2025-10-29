@@ -39,4 +39,3 @@ test.describe('Playwright Setup Verification', () => {
     console.log('✓ Element selection and assertions work');
   });
 });
-
